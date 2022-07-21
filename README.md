@@ -1,5 +1,9 @@
 # hep
  一款对拍器（评测机）
+ 使用方法：
+ 在cmd种输入hep -?或者hep -help了解
+ 注意事项：
+ 在hep.exe所在文件夹下建立一个名叫"UnacceptedData"的文件夹，否则拷贝错误数据时会报错
 
 # Update Record
 ## Version 0.9 [Build 901]
