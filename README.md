@@ -10,7 +10,7 @@
 Code the hep core file - hep.cpp.\
 Support the basic check option now.\
 Program is able to analyze the five states.\
-$\textt{\color{white}{\colorbox{green}{AC}}}$
+$\texttt{\color{white}{\colorbox{green}{AC}}}$
 $\color{white}{\colorbox{red}{WA}}$
 $\color{white}{\colorbox{purple}{RE}}$
 $\color{white}{\colorbox{black}{TLE}}$
