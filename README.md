@@ -10,7 +10,11 @@
 Code the hep core file - hep.cpp.\
 Support the basic check option now.\
 Program is able to analyze the five states.\
-$\colorbox{red}{AC}$[AC] [WA] [TLE] [RE] and [UKE]\
+$\color{white}{\colorbox{green}{AC}}$
+$\color{white}{\colorbox{red}{WA}}$
+$\color{white}{\colorbox{purple}{RE}}$
+$\color{white}{\colorbox{black}{TLE}}$
+$\color{white}{\colorbox{black}{UKE}}$
 Show the running info with highlight. (cmd: color 0f)\
 Be able to check in given time limit.\
 Promise updating the command "-help" and "-?" next updating.\
