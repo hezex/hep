@@ -115,7 +115,7 @@ int point::run(const char *runcmd)
 	{
 		state=2;
 		setcolor(CTC_BW);
-		cout<<"[TLE] "<<runtime;
+		cout<<"[TLE] Runtime:"<<runtime<<"ms";
 		setcolor(CTC_BW);
 		cout<<endl<<endl;
 		copydata(id);
@@ -147,7 +147,6 @@ int point::getstate()
 void point::print()
 {
 	setcolor(tpcolor[state]);
-	putchar(' ');
 	cout<<tpsign[state];
 	setcolor(0x07);
 }

@@ -76,9 +76,7 @@ int main(int argc,char *argv[])
 	cout<<"Testing Point Result:\n";
 	for(int i=1;i<=tpn;i++)
 	{
-		setcolor(tpcolor[p[i].getstate()]);
-		cout<<tpsign[p[i].getstate()];
-		setcolor(CTC_BW);
+		p[i].print();
 		cout<<' ';
 		if(!p[i].getstate()) ac++;
 		if(i%10==0) cout<<endl;
