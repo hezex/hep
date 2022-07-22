@@ -4,10 +4,10 @@ Name=hep 1
 Type=1
 Ver=2
 ObjFiles=
-Includes=
+Includes=.\bin\include\
 Libs=
 PrivateResource=hep_1_private.rc
-ResourceIncludes=
+ResourceIncludes=.\bin\include\
 MakeIncludes=
 Compiler=
 CppCompiler=
@@ -28,8 +28,8 @@ Folders=
 IncludeVersionInfo=1
 SupportXPThemes=0
 CompilerSet=1
-CompilerSettings=0000000000000000001000000
-UnitCount=1
+CompilerSettings=00000000c0000000001000000
+UnitCount=3
 
 [VersionInfo]
 Major=1
@@ -52,6 +52,36 @@ SyncProduct=1
 
 [Unit1]
 FileName=hep 1.0.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit2]
+FileName=bin\include\global.hpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit3]
+FileName=bin\include\point.hpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit4]
+FileName=bin\include\refence\point.cpp
 CompileCpp=1
 Folder=
 Compile=1

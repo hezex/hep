@@ -1,62 +1,14 @@
-#include <iostream>
-#include <cstdio>
-#include <windows.h>
-#include <cstring>
-#include <cstdlib>
-#include <ctime>
-#define CTC_BG 0x0a
-#define CTC_BR 0x0c
-#define CTC_BW 0x07
-#define CTC_PW 0x5f
-#define CTC_RW 0x4f
-#define CTC_GW 0x2f
+#include "global.hpp"
+#include "point.hpp" 
 using namespace std;
-void setcolor(char c)
-{
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),c);
-}
 int n;
 string tmp,demo;
 FILE *wng,*crr;
 char wrong[1000005],correct[1000005];
 int wlen,clen,start,wt,tpn,tl,line,ac;
-int state[1000005]; //0:AC 1:WA 2:TLE 3:RE 4:UKE
-int color[5]={CTC_GW,CTC_RW,CTC_BW,CTC_PW,CTC_BW};
-char sign[5][16]={"[AC]","[WA]","[TLE]","[RE]","[UKE]"};
+point p[10000005];
 double score;
 bool allspace;
-void copyrightdata(int number)
-{
-	demo="copy data.in .\\UnacceptedData\\data";
-	demo+=to_string(number);
-	demo+=".in";
-	system(demo.data());
-}
-void clean()
-{
-	system("del data.in");
-	system("del wrong.out");
-	system("del correct.out");
-}
-void print_from_file(const char *file_name)
-{
-	string path=".\\bin\\text\\";
-	path+=file_name;
-	freopen(path.data(),"r",stdin);
-	char c=getchar();
-	while(c&&c!=EOF)
-	{
-		putchar(c);
-		c=getchar();
-	}
-	fclose(stdin);
-}
-void call_bat(const char *file_name)
-{
-	string path=".\\bin\\bat\\";
-	path+=file_name;
-	system(path.data());
-}
 int main(int argc,char *argv[])
 {
 	setcolor(CTC_BW);
@@ -70,7 +22,7 @@ int main(int argc,char *argv[])
 			print_from_file("help.txt");
 			return 0;
 		}
-		else if(!strcmp(argv[1],"-clear")) return system("del /S /Q .\\UnacceptedData\\*.*"),0;
+		else if(!strcmp(argv[1],"-clear")) return call_bat("del_ud.bat"),0;
 		else
 		{
 			cout<<"Unknow option on argv 1. Check your input again\n";
@@ -116,112 +68,19 @@ int main(int argc,char *argv[])
 		else{demo=tmp+">data.in";system(demo.data());}
 		tmp=argv[1];demo=tmp+"<data.in>correct.out";system(demo.data());
 		tmp=argv[2];demo=tmp+"<data.in>wrong.out";
-		start=clock();
-		system(demo.data());
-		wt=clock()-start;
-		wng=fopen("wrong.out","r");
-		if(wng==NULL)
-		{
-			state[tpn]=4;
-			setcolor(CTC_BW);
-			cout<<"[UKE]";
-			setcolor(CTC_BR);
-			cout<<"Could not generate the answer of wrong\n";
-			copyrightdata(tpn);
-			fclose(wng);
-			clean();
-			continue;
-		}
-		crr=fopen("correct.out","r");
-		if(crr==NULL)
-		{
-			state[tpn]=4;
-			setcolor(CTC_BW);
-			cout<<"[UKE]";
-			setcolor(CTC_BR);
-			cout<<"Could not generate the answer of correct\n";
-			copyrightdata(tpn);
-			clean();
-			fclose(wng);
-			fclose(crr);
-			continue;
-		}
-		state[tpn]=line=0;
-		while(true)
-		{
-			fgets(wrong,1000005,wng);
-			fgets(correct,1000005,crr);
-			line++;
-			wlen=strlen(wrong);
-			clen=strlen(correct);
-			allspace=true;
-			for(int i=0;i<max(wlen,clen);i++)
-			{
-				if(wrong[i]!=' '&&wrong[i]!='\n'&&wrong[i]!='\0') allspace=false;
-				if(wrong[i]==correct[i]) continue;
-				else
-				{
-					if(wrong[i]==' '&&correct[i]=='\0') continue;
-					if(wrong[i]=='\0'&&correct[i]==' ') continue;
-					if(wrong[i]=='\t'&&correct[i]=='\0') continue;
-					if(wrong[i]=='\0'&&correct[i]=='\t') continue;
-					if(wrong[i]==' '&&correct[i]=='\t') continue;
-					if(wrong[i]=='\t'&&correct[i]==' ') continue;
-					if(wrong[i]==' '&&correct[i]=='\n') continue;
-					if(wrong[i]=='\n'&&correct[i]==' ') continue;
-					if(wrong[i]=='\0'&&correct[i]=='\n') continue;
-					if(wrong[i]=='\n'&&correct[i]=='\0') continue;
-					state[tpn]=1;
-					break;
-				}
-			}
-			if(state[tpn]) break;
-			if(feof(wng)&&feof(crr)) break;
-		}
-		if(allspace||wt>2200)
-		{
-			state[tpn]=3;
-			setcolor(CTC_PW);
-			cout<<"[RE]";
-			setcolor(CTC_BW);
-			cout<<endl<<endl;
-			continue;
-		}
-		if(wt>tl)
-		{
-			state[tpn]=2;
-			setcolor(CTC_BW);
-			cout<<"[TLE]";
-			setcolor(CTC_BW);
-			cout<<endl<<endl;
-			continue;
-		}
-		if(state[tpn])
-		{
-			setcolor(CTC_RW);cout<<"[WA]";
-			setcolor(CTC_BW);cout<<"on Line "<<line;
-			cout<<"\n";
-			copyrightdata(tpn);
-		}
-		else
-		{
-			setcolor(CTC_GW);cout<<"[AC]";
-			setcolor(CTC_BW);cout<<"\nCongratulations!\n";
-		}
-		cout<<"Runtime:"<<wt<<"ms\n";
-		cout<<"\n";
-		fclose(wng);
-		fclose(crr);
+		p[tpn].setid(tpn);
+		p[tpn].settimelimit(tl);
+		p[tpn].run(demo.data());
 	}
 	cout<<"Program End Successfully\n";
 	cout<<"Testing Point Result:\n";
 	for(int i=1;i<=tpn;i++)
 	{
-		setcolor(color[state[i]]);
-		cout<<sign[state[i]];
+		setcolor(tpcolor[p[i].getstate()]);
+		cout<<tpsign[p[i].getstate()];
 		setcolor(CTC_BW);
 		cout<<' ';
-		if(!state[i]) ac++;
+		if(!p[i].getstate()) ac++;
 		if(i%10==0) cout<<endl;
 	}
 	score=ac*1.0/tpn*100;
