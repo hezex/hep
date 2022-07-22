@@ -1,0 +1,18 @@
+Options:
+4/5 argv for simple tests
+[argv1]		The standard program (need .exe)
+[argv2]		The wrong program
+[argv3.1]	The data maker program
+[argv3.2]	The data folder with data file names. For example, .\\TestData\\data (no suffix input but the suffixes of data must be .in)
+[argv4]		Number of datas
+(argv5)		Time Limit
+Especially note for argv3.2. The data file name may be \".\\TestData\\data1.in\" and \".\\TestData\\data2.in\"
+But you only need to input \".\\Test Data\\data\" and this program will do with the rest things
+Note that the suffix numbers of the data files MUST be consecutive from 1\n
+\'-\' options:
+-?/-help	Get more information about hep.exe
+-clear		Delete every file in folder \"UnacceptedData\". This argv MUST be the last one
+
+[] are the argues which must have values
+() are the argues which you can choose to place
+.x are the argues which have x multi way to input and the same .x means the same argue set
