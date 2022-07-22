@@ -38,6 +38,25 @@ void clean()
 	system("del wrong.out");
 	system("del correct.out");
 }
+void print_from_file(const char *file_name)
+{
+	string path=".\\bin\\text\\";
+	path+=file_name;
+	freopen(path.data(),"r",stdin);
+	char c=getchar();
+	while(c&&c!=EOF)
+	{
+		putchar(c);
+		c=getchar();
+	}
+	fclose(stdin);
+}
+void call_bat(const char *file_name)
+{
+	string path=".\\bin\\bat\\";
+	path+=file_name;
+	system(path.data());
+}
 int main(int argc,char *argv[])
 {
 	setcolor(CTC_BW);
@@ -48,20 +67,7 @@ int main(int argc,char *argv[])
 	{
 		if(!strcmp(argv[1],"-?")||!strcmp(argv[1],"-help"))
 		{
-			cout<<"Options:\n";
-			cout<<"4/5 argv for simple tests\n";
-			cout<<"[argv1]		The standard program (need .exe)\n";
-			cout<<"[argv2]		The wrong program\n";
-			cout<<"[argv3.1]	The data maker program\n";
-			cout<<"[argv3.2]	The data folder with data file names. For example, .\\TestData\\data (no suffix input but the suffixes of data must be .in)\n";
-			cout<<"[argv4]		Number of datas\n";
-			cout<<"(argv5)		Time Limit\n";
-			cout<<"Especially note for argv3.2. The data file name may be \".\\TestData\\data1.in\" and \".\\TestData\\data2.in\"\n";
-			cout<<"But you only need to input \".\\Test Data\\data\" and this program will do with the rest things\n";
-			cout<<"Note that the suffix numbers of the data files MUST be consecutive from 1\n\n";
-			cout<<"\'-\' options:\n";
-			cout<<"-?/-help		Get more information about hep.exe\n";
-			cout<<"-clear		Delete every file in folder \"UnacceptedData\". This argv MUST be the last one\n";
+			print_from_file("help.txt");
 			return 0;
 		}
 		else if(!strcmp(argv[1],"-clear")) return system("del /S /Q .\\UnacceptedData\\*.*"),0;
@@ -90,12 +96,12 @@ int main(int argc,char *argv[])
 				cout<<"If you want to know more information, input \"hep -help\" or \"hep -?\"\n";
 				return 0;
 			}
-			else system("del /S /Q .\\UnacceptedData\\*.*");
+			else call_bat("del_ud.bat");
 		}
 		else
 		{
 			if(strcmp(argv[5],"-clear")) tl=atoi(argv[5]);
-			else system("del /S /Q .\\UnacceptedData\\*.*");
+			else call_bat("del_ud.bat");
 		}
 	for(int i=1;i<=n;i++)
 	{
