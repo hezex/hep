@@ -4,7 +4,8 @@
  在cmd种输入hep -?或者hep -help了解\
 
 # Update Record
-## Version 0.9 [Build 901]
+## Version 0.9
+### \[Build 901]
 Code the hep core file - hep.cpp.\
 Support the basic check option now.\
 Program is able to analyze the five states.\
