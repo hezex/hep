@@ -1,7 +1,7 @@
 # hep
  一款对拍器（评测机）\
  使用方法：\
- 在cmd种输入hep -?或者hep -help了解\
+ 在cmd种输入hep -?或者hep -help了解
 
 # Update Record
 ## Version 0.9
