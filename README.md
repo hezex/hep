@@ -27,4 +27,8 @@ Promise updating the command "-help" and "-?" next updating.\
 ### \[Build 1013]
 Be able to check user own datas from given folder.\
 New command - "-clear" to delete every file in UnacceptedData.\
-Finish the updating of "-help" and "-?"\
+Finish the updating of "-help" and "-?".\
+### \[Build 1023]
+Packaged the infomation of testing points into classes.\
+Detail updated.\
+Promise to the all-place argue.
