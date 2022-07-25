@@ -1,4 +1,4 @@
-//#pragma once
+#pragma once
 
 #include"global.hpp"
 
@@ -13,14 +13,14 @@ void hep_error(int err){
 }
 struct option{
 	
-	//ÊÇ·ñĞèÒªhelp or clean 
+	//æ˜¯å¦éœ€è¦help or clean 
 	bool help=false,cl=false;
-	char *c[11];//´¢´æÃüÁî 
-	int cnt;//dataÎÄ¼ş¸öÊı
-	int time;//Ê±¼äÏŞÖÆ 
-	char correct[300];//¶ÔÅÄ³ÌĞò
-	char wrong[300];//Ô­³ÌĞò
-	char maker[300];//Êı¾İÖÆÔì 
+	char *c[11];//å‚¨å­˜å‘½ä»¤ 
+	int cnt;//dataæ–‡ä»¶ä¸ªæ•°
+	int time;//æ—¶é—´é™åˆ¶ 
+	char correct[300];//å¯¹æ‹ç¨‹åº
+	char wrong[300];//åŸç¨‹åº
+	char maker[300];//æ•°æ®åˆ¶é€  
 	
 	bool is_number(char s[]){
 		for(int i=0;i<strlen(s);i++)
@@ -45,11 +45,15 @@ struct option{
 		return false;
 	} 
 	
-	inline void update_data(void){
-		if(!is_exe(c[1])||!is_exe(c[2])||!is_exe(c[3])||!is_number(c[4])||!is_number(c[5]))
+	inline void update_data(int len){
+		if(len<5||!is_exe(c[1])||!is_exe(c[2])||!is_exe(c[3])||!is_number(c[4]))
 			hep_error(forma_err);
 		cnt=atoi(c[4]);
-		time=atoi(c[5]);
+		if(len>5){
+			if(!is_number(c[5]))
+				hep_error(forma_err);
+			time=atoi(c[5]);
+		}
 		return;
 	}
 	
@@ -72,8 +76,7 @@ struct option{
 				hep_error(forma_err);
 		}else{
 			cl=find_clear(len,c);
-			update_data();
-			
+			update_data(len);
 		}
 		return;
 	}
