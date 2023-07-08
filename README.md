@@ -3,32 +3,29 @@
  使用方法：\
  在cmd种输入hep -?或者hep -help了解
 
-# Update Record
-## Version 0.9
-### \[Build 901]
-Code the hep core file - hep.cpp.\
-Support the basic check option now.\
-Program is able to analyze the five states.\
-$\color{white}{\colorbox{green}{[AC]}}$
- $\color{white}{\colorbox{red}{[WA]}}$
- $\color{white}{\colorbox{purple}{[RE]}}$
- $\color{white}{\colorbox{black}{[TLE]}}$
- $\color{white}{\colorbox{black}{[UKE]}}$
-Show the running info with highlight. (cmd: color 0f)\
-Be able to check in given time limit.\
-Promise updating the command "-help" and "-?" next updating.\
+# 更新记录
+## 版本 0.9
+### \[构造901]
+编写了hep的核心文件hep.hpp\
+现在支持了基础的检查操作\
+程序现在可以扫描程序的五种状态了\
+以高亮显示运行信息 (控制台颜色0x0f)\
+可以以给定的时间限制检查程序\
+将在下一更新中更新“-help”、“-?”指令\
 
-## Version 1.0
-### \[Build 1001]
-Create a project in Dev-C++.\
-Be able to copy the wrong answers into folder ".\UnacceptedData".\
-Add the testing point result.\
-Promise updating the command "-help" and "-?" next updating.\
-### \[Build 1013]
-Be able to check user own datas from given folder.\
-New command - "-clear" to delete every file in UnacceptedData.\
-Finish the updating of "-help" and "-?".\
-### \[Build 1023]
-Packaged the infomation of testing points into classes.\
-Detail updated.\
-Promise to the all-place argue.
+## 版本1.0
+### \[构造1001]
+在Dev-C++中正式创建了一个项目以保存代码\
+可以自动将错误答案拷贝进文件目录".\UnacceptedData"下\
+加入了测试分数反馈\
+将在下一更新中更新“-help”、“-?”指令\
+### \[构造1013]
+可以从用户给出的测试点目录进行读取并测试\
+新的指令“-clear”用于删除文件夹UnacceptedData下所有的目录\
+完成了“-help”、“-?”的更新\
+### \[构造1023]
+将测试点代码单独打包入一个类中\
+细节优化\
+将在不久后的更新中加入任意位置均被接受带有“-”的指令
+### \[构造1025]
+帮助中加入了中文语言，输入-help--cn-zh以查看
