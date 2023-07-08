@@ -17,9 +17,14 @@ int main(int argc,char *argv[])
 	cout<<"Developer: hezex | DP: DEV-C++ | Tech: CMD.exe\n";
 	if(argc==2)
 	{
-		if(!strcmp(argv[1],"-?")||!strcmp(argv[1],"-help"))
+		if(!strcmp(argv[1],"-?")||!strcmp(argv[1],"-help")||!strcmp(argv[1],"-help--en-us")||!strcmp(argv[1],"-?--en-us"))
 		{
 			print_from_file("help.txt");
+			return 0;
+		}
+		else if(!strcmp(argv[1],"-help--cn-zh")||!strcmp(argv[1],"-?--cn-zh"))
+		{
+			print_from_file("help cn-zh.txt");
 			return 0;
 		}
 		else if(!strcmp(argv[1],"-clear")) return call_bat("del_ud.bat"),0;
