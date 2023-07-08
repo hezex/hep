@@ -12,7 +12,7 @@ bool allspace;
 int main(int argc,char *argv[])
 {
 	setcolor(CTC_BW);
-	cout<<"hep[Version 1.0 Build 1013] is a application for APP debug under Windows(TM) by CMD.exe\n";
+	cout<<"hep[Version 1.0 Build 2025] is a application for APP debug under Windows(TM) by CMD.exe\n";
 	cout<<"Type \'hep -?\' or \'hep -help\' to get more infomation\n";
 	cout<<"Developer: hezex | DP: DEV-C++ | Tech: CMD.exe\n";
 	if(argc==2)
